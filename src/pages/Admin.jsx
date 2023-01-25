@@ -7,10 +7,10 @@ function Admin() {
   const [price, setPrice] = useState(6);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("fetching menu");
-    dispatch(fetchMenu());
-  }, []);
+  // useEffect(() => {
+  //   console.log("fetching menu");
+  //   dispatch(fetchMenu());
+  // }, []);
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(
