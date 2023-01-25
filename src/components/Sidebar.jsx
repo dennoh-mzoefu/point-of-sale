@@ -1,29 +1,39 @@
 import React from "react";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
 
 function Sidebar() {
   return (
     <div>
-      <div className="relative bg-gray-200">
-        <div className="absolute top-0 right-0 z-10">
-          <button className="text-gray-500 focus:outline-none">
-            <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              <path d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z" />
-            </svg>
-          </button>
-        </div>
-        <div className="px-4 py-6">
-          <h3 className="text-lg font-medium">Sidebar</h3>
-          <nav className="mt-4">
-            <a href="#" className="text-gray-600 hover:text-gray-800">
-              Home
-            </a>
-            <a href="#" className="text-gray-600 hover:text-gray-800">
-              About
-            </a>
-            <a href="#" className="text-gray-600 hover:text-gray-800">
-              Contact
-            </a>
-          </nav>
+      <div className="bg-white shadow-xl h-screen border-r border-slate-300/90 flex flex-col w-fit">
+        <AiOutlineCloseCircle className="my-5 justify-end " />
+        <div className="flex flex-col">
+          {/* each link */}
+          <div className="w-52 flex  items-center justify-center  py-3 hover:text-white  hover:bg-blue-400">
+            {/* icon  */}
+            <AiOutlineHome className="text-xl " />
+            <h3 className="ml-4 font-semibold">Home</h3>
+          </div>
+          <div className="w-52 flex  items-center justify-center  py-3 hover:text-white  hover:bg-blue-400">
+            {/* icon  */}
+            <AiOutlineHome className="text-xl " />
+            <h3 className="ml-4 font-semibold">Stock</h3>
+          </div>
+          <div className="w-52 flex  items-center justify-center  py-3 hover:text-white  hover:bg-blue-400">
+            {/* icon  */}
+            <AiOutlineHome className="text-xl " />
+            <h3 className="ml-4 font-semibold ">Orders</h3>
+          </div>
+          <div className="w-52 flex  items-center justify-center  py-3 hover:text-white hover:bg-blue-400">
+            {/* icon  */}
+            <AiOutlineHome className="text-xl " />
+            <h3 className="ml-4 font-semibold">Sales</h3>
+          </div>
+          <div className="w-52 flex  items-center justify-center  py-3 hover:text-white  hover:bg-blue-400">
+            {/* icon  */}
+            <AiOutlineHome className="text-xl " />
+            <h3 className="ml-4 font-semibold">Expenses</h3>
+          </div>
         </div>
       </div>
     </div>
