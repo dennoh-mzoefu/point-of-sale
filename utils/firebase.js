@@ -1,6 +1,20 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  onSnapshot,
+  addDoc,
+  deleteDoc,
+  doc,
+  query,
+  where,
+  orderBy,
+  serverTimestamp,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB-0nGQzSC9KWM5qTdq61__PhXuYUSGyCQ",
@@ -27,3 +41,14 @@ export const signInWithGoogle = () => {
       //   return error;
     });
 };
+
+export const db = getFirestore(app);
+
+// collection ref
+export const colRef = collection(db, "menu");
+
+// queries
+// const q = query(colRef, where("author", "==", "patrick rothfuss"), orderBy('createdAt'))
+export const q = query(colRef, where("name", "==", "chapati"));
+
+// realtime collection data
