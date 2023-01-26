@@ -1,26 +1,31 @@
 import React from "react";
-import "./style.css";
-import { food } from "../../assets/dummy";
 import { useSelector } from "react-redux";
 
 function Menu() {
   const { menu } = useSelector((state) => state.menu);
   console.log({ menu });
   return (
-    <div className="menu">
+    <div className="flex flex-col items-center">
       <h2>Menu</h2>
       <h4>Snacks</h4>
-      <div className="aboveMenu">
+      <div className="flex justify-around flex-wrap">
         {menu?.map((item, index) => {
           return (
-            <div className="wholeMenu" key={index}>
-              <div className="menuItem">
-                <img className="menuImage" src={item?.image} alt="food pic" />
+            <div
+              className="flex flex-col bg-slate-50 shadow-lg m-2 w-fit rounded-lg"
+              key={index}
+            >
+              <div className="flex flex-col">
+                <img
+                  className="h-48 w-48 rounded-t-lg"
+                  src={item?.image}
+                  alt="food pic"
+                />
                 {/* name */}
-                <p className="menuDesc">{item.name}</p>
-                <p className="menuDesc">{item.category}</p>
+                <p className="py-1 pl-10 pr-5">{item.name}</p>
+                <p className="py-1 pl-10 pr-5">{item.category}</p>
                 {/* price */}
-                <p className="menuDesc">Ksh {item.price}</p>
+                <p className="py-1 pl-10 pr-5">Ksh {item.price}</p>
               </div>
             </div>
           );
