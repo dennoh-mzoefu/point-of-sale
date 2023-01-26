@@ -1,5 +1,6 @@
 import React from "react";
 import { BiUserCircle } from "react-icons/bi";
+import { GrNotification } from "react-icons/gr";
 import logo from "../assets/resturant-logo.svg";
 
 function Navbar() {
@@ -9,7 +10,10 @@ function Navbar() {
         <img src={logo} className="h-10" />
         <h1 className="ml-4 text 2xl">Green Pastures Hotel</h1>
       </div>
-      <BiUserCircle className="text-3xl" />
+      <div className="flex">
+        <BiUserCircle className="text-3xl  mx-5" />
+        <GrNotification className="text-3xl mx-5" />
+      </div>
     </div>
   );
 }
