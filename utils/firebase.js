@@ -15,7 +15,8 @@ import {
   getDoc,
   getDocs,
 } from "firebase/firestore";
-
+// import { getStorage } from "firebase/storage";;
+import { getStorage } from "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyB-0nGQzSC9KWM5qTdq61__PhXuYUSGyCQ",
   authDomain: "green-pastures-ce180.firebaseapp.com",
@@ -52,3 +53,4 @@ export const colRef = collection(db, "menu");
 export const q = query(colRef, where("name", "==", "chapati"));
 
 // realtime collection data
+const storage = getStorage(app);

@@ -10,6 +10,7 @@ export default defineConfig({
       "firebase/auth",
       "firebase/firestore",
       "firebase/analytics",
+      "firebase/storage",
     ],
   },
   plugins: [react()],
