@@ -1,26 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import MenuImage from "./MenuImage";
 
 function Menu() {
+  const [url, setUrl] = useState("");
   const { menu } = useSelector((state) => state.menu);
   console.log({ menu });
+
   return (
     <div className="flex flex-col items-center">
-      <h2>Menu</h2>
+      <div className="flex flex-col justify-start p-9 shadow-lg bg-white w-full">
+        <h1 className="text-2xl">Menu</h1>
+      </div>
       <h4>Snacks</h4>
-      <div className="flex justify-around flex-wrap">
+      <div className="flex  flex-wrap">
         {menu?.map((item, index) => {
           return (
             <div
-              className="flex flex-col bg-slate-50 shadow-lg m-2 w-fit rounded-lg"
+              className="flex flex-col bg-white shadow-lg m-2 w-fit rounded-lg"
               key={index}
             >
               <div className="flex flex-col">
-                <img
-                  className="h-48 w-48 rounded-t-lg"
-                  src={item?.image}
-                  alt="food pic"
-                />
+                {/* <div className="w-0 h-0" onLoad={console.log({ url })}></div> */}
+                <MenuImage imageRef={item.imageRef} />
                 {/* name */}
                 <p className="py-1 pl-10 pr-5">{item.name}</p>
                 <p className="py-1 pl-10 pr-5">{item.category}</p>
