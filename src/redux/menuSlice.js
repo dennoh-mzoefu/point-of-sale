@@ -1,17 +1,15 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { onSnapshot, addDoc } from "firebase/firestore";
 import { q, colRef } from "../../utils/firebase";
-// import { UsersData } from "../FakeData";
 const initialState = {
   menu: [],
 };
-// console.log(liveMenu());
+
 export const menuSlice = createSlice({
   name: "menu",
   initialState,
   reducers: {
     fetchMenu: (state, action) => {
-      // console.log(action.payload);
       state.menu = action.payload;
       console.log(current(state));
     },
@@ -22,6 +20,7 @@ export const menuSlice = createSlice({
         category: action.payload.category,
         name: action.payload.name,
         price: action.payload.price,
+        imageRef: action.payload.imageRef,
       }).then((res) => {
         console.log(res);
       });
