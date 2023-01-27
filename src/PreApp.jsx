@@ -1,22 +1,31 @@
 import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { colRef } from "../utils/firebase";
+import { colRef, ordersColRef } from "../utils/firebase";
 import { fetchMenu } from "./redux/menuSlice";
+import { fetchOrder } from "./redux/orderSlice";
 
 function PreApp() {
   const [menuItems, setMenuItems] = useState([]);
+  const [orders, setOrders] = useState([]);
   const dispatch = useDispatch();
   let b = [];
   useEffect(() => {
     onSnapshot(colRef, (snapshot) => {
       setMenuItems(snapshot.docs.map((doc) => doc.data()));
     });
+    onSnapshot(ordersColRef, (snapshot) => {
+      setOrders(snapshot.docs.map((doc) => doc.data()));
+    });
   }, []);
   useEffect(() => {
     menuItems.length !== 0 && dispatch(fetchMenu(menuItems));
   }, [menuItems]);
-  console.log(menuItems);
+  useEffect(() => {
+    orders.length !== 0 && dispatch(fetchOrder(orders));
+  }, [menuItems]);
+  console.log({ menuItems });
+  console.log({ orders });
 
   return <div></div>;
 }
