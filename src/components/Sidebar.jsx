@@ -48,7 +48,7 @@ function Sidebar() {
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <AiOutlineHome className="text-xl " />
-                <h3 className="ml-4 font-semibold ">Orders</h3>
+                <h3 className="ml-4 font-semibold ">Menu Manager</h3>
               </div>
             </div>
           </Link>
