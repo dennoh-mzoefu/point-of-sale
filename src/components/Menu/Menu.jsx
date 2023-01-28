@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addCurrentOrder } from "../../redux/orderSlice";
 import MenuImage from "./MenuImage";
 
 function Menu() {
   const [url, setUrl] = useState("");
   const { menu } = useSelector((state) => state.menu);
   console.log({ menu });
+  const dispatch = useDispatch();
+  const handleOrder = (item) => {
+    console.log({ item });
+    dispatch(addCurrentOrder(item));
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -29,6 +35,7 @@ function Menu() {
                 {/* price */}
                 <p className="py-1 pl-10 pr-5">Ksh {item.price}</p>
               </div>
+              <button onClick={() => handleOrder(item)}>Place Order</button>
             </div>
           );
         })}
