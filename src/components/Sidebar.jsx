@@ -43,12 +43,12 @@ function Sidebar() {
               </div>
             </div>
           </Link>
-          <Link to="/orders">
+          <Link to="/ordermanager">
             <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400">
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <AiOutlineHome className="text-xl " />
-                <h3 className="ml-4 font-semibold ">Menu Manager</h3>
+                <h3 className="ml-4 font-semibold ">Order Manager</h3>
               </div>
             </div>
           </Link>
