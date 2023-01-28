@@ -15,7 +15,7 @@ import Employees from "./pages/Employees";
 import Expenses from "./pages/Expenses";
 import Store from "./pages/Store";
 import MenuPage from "./pages/MenuPage";
-import MenuManager from "./pages/MenuManager";
+import OrderManager from "./pages/OrderManager";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/menu" element={<MenuPage />} />
-          <Route path="/menumanager" element={<MenuManager />} />
+          <Route path="/ordermanager" element={<OrderManager />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/sales" element={<Sales />} />
