@@ -28,6 +28,8 @@ export const orderSlice = createSlice({
         quantity: action.payload.quantity,
         name: action.payload.name,
         price: action.payload.price,
+        isPrepared: action.payload.isPrepared,
+        isCancelled: action.payload.isCancelled,
         time: Date.now(),
       }).then((res) => {
         console.log(res);
