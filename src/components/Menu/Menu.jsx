@@ -10,7 +10,15 @@ function Menu() {
   const dispatch = useDispatch();
   const handleOrder = (item) => {
     console.log({ item });
-    dispatch(addCurrentOrder(item));
+
+    dispatch(
+      addCurrentOrder({
+        ...item,
+        quantity: 1,
+        isPrepared: false,
+        isCancelled: false,
+      })
+    );
   };
 
   return (
