@@ -1,11 +1,11 @@
 import React from "react";
 import AddStock from "../components/AddStock";
-import Orders from "../components/Menu/Orders";
+import Orders from "../components/Orders/Orders";
 
 function OrderManager() {
   return (
     <div>
-     <Orders/>
+      <Orders />
     </div>
   );
 }
