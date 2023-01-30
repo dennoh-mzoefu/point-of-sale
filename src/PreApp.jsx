@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { colRef, ordersColRef } from "../utils/firebase";
 import { fetchMenu } from "./redux/menuSlice";
-import { fetchOrder } from "./redux/orderSlice";
+import { fetchOrders } from "./redux/orderSlice";
 
 function PreApp() {
   const [menuItems, setMenuItems] = useState([]);
@@ -11,18 +11,20 @@ function PreApp() {
   const dispatch = useDispatch();
   let b = [];
   useEffect(() => {
-    onSnapshot(colRef, (snapshot) => {
-      setMenuItems(snapshot.docs.map((doc) => doc.data()));
-    });
     onSnapshot(ordersColRef, (snapshot) => {
       setOrders(snapshot.docs.map((doc) => doc.data()));
+    });
+  }, []);
+  useEffect(() => {
+    onSnapshot(colRef, (snapshot) => {
+      setMenuItems(snapshot.docs.map((doc) => doc.data()));
     });
   }, []);
   useEffect(() => {
     menuItems.length !== 0 && dispatch(fetchMenu(menuItems));
   }, [menuItems]);
   useEffect(() => {
-    orders.length !== 0 && dispatch(fetchOrder(orders));
+    orders.length !== 0 && dispatch(fetchOrders(orders));
   }, [menuItems]);
   console.log({ menuItems });
   console.log({ orders });
