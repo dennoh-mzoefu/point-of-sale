@@ -50,28 +50,28 @@ function AddStock() {
   };
   return (
     // <div>
-    <div className="bg-white pt-5  flex flex-col justify-center items-center w-64 h-fit mx-4 mt-4 rounded-2xl">
+    <div className="bg-white pt-5 w-full flex flex-col justify-center items-center  h-fit mx-4 mt-4 rounded-2xl">
       <h2 className="text-lg">Add food item to menu</h2>
-      <div className=" border-t-2 border-slate-900/50 w-3/4 my-4 "></div>
+      <div className=" border-t-2 border-slate-900/50  my-4 "></div>
       <div className="flex flex-col justify-start">
         <div className="flex flex-col justify-center items-center ">
           <input
             type="text"
             placeholder="Category"
             value={category}
-            className=" px-3 border border-black my-2 h-10"
+            className=" px-3 border-b w-full border-amber-700 my-2 h-10"
             onChange={(e) => setCategory(e.target.value)}
           />
           <input
             type="text"
             placeholder="Name"
-            className="px-3 border border-black my-2 h-10"
+            className="px-3 border-b w-full border-amber-700 my-2 h-10"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type="number"
-            className="px-3 border border-black my-2 h-10"
+            className="px-3 border-b w-full border-amber-700 my-2 h-10"
             placeholder="Price"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
