@@ -1,6 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { addDoc } from "firebase/firestore";
-import { ordersColRef } from "../../utils/firebase";
+import { addDoc, deleteDoc } from "firebase/firestore";
+import { db, ordersColRef } from "../../utils/firebase";
 const initialState = {
   currentOrders: [],
   orders: [],
@@ -35,8 +35,27 @@ export const orderSlice = createSlice({
         console.log(res);
       });
     },
+    deleteOrder: (state, action) => {
+      const docRef = doc(db, "orders", action.payload);
+
+      deleteDoc(docRef).then(() => {
+        console.log(action.payload);
+      });
+    },
+    deleteCurrentOrder: (state, action) => {
+      console.log(current(state));
+      console.log(action.payload);
+      var index = state.currentOrders.indexOf(action.payload);
+      state.currentOrders.splice(index, 1);
+    },
   },
 });
 
-export const { fetchOrder, addCurrentOrder, addOrder } = orderSlice.actions;
+export const {
+  fetchOrders,
+  addCurrentOrder,
+  addOrder,
+  deleteOrder,
+  deleteCurrentOrder,
+} = orderSlice.actions;
 export default orderSlice.reducer;
