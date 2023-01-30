@@ -6,9 +6,9 @@ import PreOrders from "../components/Orders/PreOrders";
 function MenuPage() {
   return (
     <div className=" w-full mt-2 ml-2 ">
-      <div className="flex w-full">
+      <div className="flex w-full justify-between">
         <Menu className="" />
-        <div className="w-full flex flex-col">
+        <div className=" flex flex-col min-w-4/12">
           <PreOrders />
           <AddStock />
         </div>
