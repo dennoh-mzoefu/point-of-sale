@@ -4,7 +4,7 @@ import Orders from "../components/Orders/Orders";
 
 function OrderManager() {
   return (
-    <div>
+    <div className="w-full ">
       <Orders />
     </div>
   );
