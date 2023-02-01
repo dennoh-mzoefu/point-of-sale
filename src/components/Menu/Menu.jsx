@@ -11,7 +11,7 @@ function Menu() {
   console.log({ menu });
   const dispatch = useDispatch();
   const handleOrder = (item) => {
-    console.log({ item });
+    // console.log({ item });
 
     dispatch(
       addCurrentOrder({
