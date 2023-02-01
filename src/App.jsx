@@ -12,10 +12,11 @@ import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Sales from "./pages/Sales";
 import Employees from "./pages/Employees";
-import Expenses from "./pages/Expenses";
+// import Expenses from "./pages/Expenses";
 import Store from "./pages/Store";
 import MenuPage from "./pages/MenuPage";
 import OrderManager from "./pages/OrderManager";
+import ExpensePage from "./pages/ExpensePage";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/employees" element={<Employees />} />
-          <Route path="/expenses" element={<Expenses />} />
+          <Route path="/expenses" element={<ExpensePage />} />
           <Route path="/store" element={<Store />} />
         </Routes>
       </div>
