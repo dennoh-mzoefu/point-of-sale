@@ -8,7 +8,7 @@ function MenuImage({ imageRef }) {
     imageRef &&
       getDownloadURL(ref(storage, imageRef))
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setUrl(response);
         })
         .catch((error) => {
