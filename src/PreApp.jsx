@@ -37,6 +37,7 @@ function PreApp() {
     dispatch(fetchOrders(orders));
   }, [orders]);
   useEffect(() => {
+    console.log({ expense });
     dispatch(fetchExpenses(expense));
   }, [expense]);
   console.log({ menuItems });
