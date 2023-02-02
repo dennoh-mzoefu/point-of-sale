@@ -1,9 +1,9 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { addDoc } from "firebase/firestore";
-import { expenseColRef } from "../../utils/firebase";
+import { addDoc, deleteDoc, doc } from "firebase/firestore";
+import { db, expenseColRef } from "../../utils/firebase";
 
 const initialState = {
-  expenses: [],
+  expense: [],
 };
 
 export const expenseSlice = createSlice({
@@ -11,17 +11,19 @@ export const expenseSlice = createSlice({
   initialState,
   reducers: {
     fetchExpenses: (state, action) => {
+      console.log(action.payload);
       return {
         ...state,
-        expenses: action.payload,
+        expense: action.payload,
       };
     },
     addExpense: (state, action) => {
+      console.log(action.payload);
       addDoc(expenseColRef, {
         quantity: action.payload.quantity,
         name: action.payload.name,
         price: action.payload.price,
-        category: action.payload.isPrepared,
+        category: action.payload.category,
         time: new Date(),
       }).then((res) => {
         console.log(res);
