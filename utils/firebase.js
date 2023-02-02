@@ -48,6 +48,8 @@ export const db = getFirestore(app);
 // collection ref
 export const colRef = collection(db, "menu");
 export const ordersColRef = collection(db, "orders");
+export const expenseColRef = collection(db, "expense");
+export const stockColRef = collection(db, "stock");
 
 // queries
 // const q = query(colRef, where("author", "==", "patrick rothfuss"), orderBy('createdAt'))
@@ -55,3 +57,5 @@ export const q = query(colRef, where("name", "==", "chapati"));
 
 // realtime collection data
 export const storage = getStorage(app);
+
+// single doc ref

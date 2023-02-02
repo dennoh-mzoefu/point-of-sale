@@ -1,10 +1,12 @@
 import React from "react";
 import Expense from "../components/Expense";
+import ExpenseList from "../components/ExpenseList";
 
 function ExpensePage() {
   return (
-    <div className=" w-full">
+    <div className="flex flex-col flex-wrap w-full">
       <Expense />
+      <ExpenseList />
     </div>
   );
 }
