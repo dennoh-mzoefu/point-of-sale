@@ -9,15 +9,15 @@ import { Link } from "react-router-dom";
 
 function Sidebar() {
   const style =
-    "w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400";
+    "w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400";
   return (
     <div>
-      <div className="bg-white shadow-xl h-screen border-r border-slate-300/90 flex flex-col w-fit">
+      <div className="bg-white shadow-xl h-screen border-r border-slate-300/90 flex flex-col w-fit ">
         <AiOutlineCloseCircle className="my-5 justify-end " />
         <div className="flex flex-col">
           {/* each link */}
           <Link to="/home">
-            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400">
+            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400">
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <AiOutlineHome className="text-xl " />
@@ -26,7 +26,7 @@ function Sidebar() {
             </div>
           </Link>
           <Link to="/menu">
-            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400">
+            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400">
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <MdMenuBook className="text-xl " />
@@ -35,7 +35,7 @@ function Sidebar() {
             </div>
           </Link>
           <Link to="/employees">
-            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400">
+            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400">
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <MdPeople className="text-xl " />
@@ -44,7 +44,7 @@ function Sidebar() {
             </div>
           </Link>
           <Link to="/ordermanager">
-            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400">
+            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400">
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <AiOutlineHome className="text-xl " />
@@ -53,7 +53,7 @@ function Sidebar() {
             </div>
           </Link>
           <Link to="/sales">
-            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400">
+            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400">
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <FcSalesPerformance className="text-xl " />
@@ -61,8 +61,8 @@ function Sidebar() {
               </div>
             </div>
           </Link>
-          <Link to="/expenses">
-            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400">
+          <Link to="/expense">
+            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400">
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <FcMoneyTransfer className="text-xl " />
@@ -71,7 +71,7 @@ function Sidebar() {
             </div>
           </Link>
           <Link to="/store">
-            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-blue-400">
+            <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400">
               <div className="w-3/4 flex  items-center justify-items-start   ">
                 {/* icon  */}
                 <GrDocumentStore className="text-xl " />
