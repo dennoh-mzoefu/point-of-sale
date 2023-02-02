@@ -3,34 +3,37 @@ import { useDispatch } from "react-redux";
 import { addOrder, deleteCurrentOrder } from "../../redux/orderSlice";
 
 function PreOrderItem({ item }) {
-  const [orderItem, setOrderItem] = useState(item);
+  // const [orderItem, setOrderItem] = useState(null);
+  useEffect(() => {
+    // setOrderItem(item);
+    setQuantity(item.quantity);
+  }, [item]);
   const [quantity, setQuantity] = useState(parseInt(item.quantity));
   let a = item.price;
   const [price, setPrice] = useState(item.price);
-  console.log(quantity);
   const dispatch = useDispatch();
 
   const AddQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
-    console.log({ quantity });
   };
   const LowerQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity - 1);
-    console.log({ quantity });
   };
-  const confirmOrder = (item) => {
+  const confirmOrder = () => {
     dispatch(
       addOrder({
+        orderId: item.orderId,
         quantity,
-        name: orderItem.name,
+        name: item.name,
         price,
         isPrepared: false,
         isCancelled: false,
       })
     );
+    console.log(quantity, item.name, price);
   };
   const DeleteOrder = () => {
-    dispatch(deleteCurrentOrder(orderItem.orderId));
+    dispatch(deleteCurrentOrder(item.orderId));
   };
   useEffect(() => {
     setPrice(quantity * a);
@@ -38,7 +41,7 @@ function PreOrderItem({ item }) {
   return (
     <div className="flex shadow-xl mb-2 ">
       <div className="flex flex-col  mr-3 ">
-        <div className="bg-blue-200 text-white-500 pl-2 w-fit w-36 rounded-md shadow-xl">
+        <div className="bg-green-200 text-white-500 pl-2 w-fit w-36 rounded-md shadow-xl">
           <h3>{item.name}</h3>
           <h3>Ksh {price}</h3>
         </div>
