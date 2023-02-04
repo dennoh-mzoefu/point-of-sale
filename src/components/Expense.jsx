@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addExpense } from "../redux/expenseSlice";
 import { addStockItem } from "../redux/stockSlice";
 
@@ -8,7 +8,9 @@ function Expense() {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState("");
+  const { stock } = useSelector((state) => state.stock);
   // const [name, setName] = useState('');
+  const [filteredNames, setFilteredNames] = useState(stock);
   const handleOtherExpenses = () => {
     const category = "other";
     if (quantity && name && price && category) {
@@ -33,6 +35,22 @@ function Expense() {
       }
     }
   };
+  const handleChange = (e) => {
+    const keyword = e.target.value;
+
+    if (keyword !== "") {
+      const results = stock.filter((user) => {
+        return user.name.toLowerCase().startsWith(keyword.toLowerCase());
+        // Use the toLowerCase() method to make it case-insensitive
+      });
+      setFilteredNames(results);
+    } else {
+      setFoundUsers(stock);
+      // If the text field is empty, show all users
+    }
+
+    setName(keyword);
+  };
   return (
     <div className="flex flex-col justify-center items-center mt-3 px-3">
       <h2 className="text-2xl py-2 w-full bg-white text-center ">Expense</h2>
@@ -43,11 +61,21 @@ function Expense() {
             <p>Enter Item:</p>
             <input
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => handleChange(e)}
               type="text"
               className="w-full  border-b border-black "
               placeholder="Eg: tomato"
             />
+            {/* filter stock names */}
+            <div className="">
+              {filteredNames?.map((item, index) => {
+                return (
+                  <div key={index} className="flex flex-col">
+                    {item}
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div className="flex text-sm bg-slate-100 p-2 my-2">
             <p>Enter Total Price:</p>
