@@ -10,7 +10,12 @@ export const stockSlice = createSlice({
   name: "stock",
   initialState,
   reducers: {
-    fetchStock: (state, action) => {},
+    fetchStock: (state, action) => {
+      return {
+        ...state,
+        stock: action.payload,
+      };
+    },
     addStockItem: (state, action) => {
       console.log(action.payload);
       addDoc(stockColRef, {
