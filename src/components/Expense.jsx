@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpense } from "../redux/expenseSlice";
 import { addStockItem } from "../redux/stockSlice";
@@ -9,12 +9,27 @@ function Expense() {
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState("");
   const { stock } = useSelector((state) => state.stock);
+  const [otherName, setOtherName] = useState("");
+  const [otherQuantity, setOtherQuantity] = useState(0);
+  const [otherPrice, setOtherPrice] = useState("");
+  // const { stock } = useSelector((state) => state.stock);
   // const [name, setName] = useState('');
-  const [filteredNames, setFilteredNames] = useState(stock);
+  const [filteredNames, setFilteredNames] = useState([]);
+  useEffect(() => {
+    setFilteredNames(stock);
+  }, []);
+  console.log({ filteredNames });
   const handleOtherExpenses = () => {
     const category = "other";
-    if (quantity && name && price && category) {
-      console.log(quantity, name, price, category);
+    if (otherName && otherQuantity && otherPrice) {
+      dispatch(
+        addExpense({
+          quantity: otherQuantity,
+          name: otherName,
+          price: otherPrice,
+          category,
+        })
+      );
     } else {
       alert("Missing Field");
     }
@@ -39,13 +54,15 @@ function Expense() {
     const keyword = e.target.value;
 
     if (keyword !== "") {
-      const results = stock.filter((user) => {
-        return user.name.toLowerCase().startsWith(keyword.toLowerCase());
-        // Use the toLowerCase() method to make it case-insensitive
+      const results = stock.filter((item) => {
+        return item.name.toLowerCase().includes(keyword.toLowerCase());
       });
       setFilteredNames(results);
+      console.log({ keyword });
+      console.log({ results });
     } else {
-      setFoundUsers(stock);
+      setFilteredNames([]);
+      // setFoundUsers(stock);
       // If the text field is empty, show all users
     }
 
@@ -57,24 +74,32 @@ function Expense() {
       <div className="flex flex-wrap mt-5 w-full justify-around">
         <div className=" flex flex-col  p-3 bg-white">
           <h3>Stock Expenses</h3>
-          <div className="flex w-80 bg-slate-100 p-2 my-2">
-            <p>Enter Item:</p>
-            <input
-              value={name}
-              onChange={(e) => handleChange(e)}
-              type="text"
-              className="w-full  border-b border-black "
-              placeholder="Eg: tomato"
-            />
-            {/* filter stock names */}
-            <div className="">
-              {filteredNames?.map((item, index) => {
-                return (
-                  <div key={index} className="flex flex-col">
-                    {item}
-                  </div>
-                );
-              })}
+          <div className="flex flex-col">
+            <div className="flex w-80 bg-slate-100 p-2 my-2">
+              <p>Enter Item:</p>
+              <input
+                value={name}
+                // onChange={(e) => setName(e.target.value)}
+                onChange={(e) => handleChange(e)}
+                type="text"
+                className="w-full  border-b border-black "
+                placeholder="Eg: tomato"
+              />
+            </div>
+            <div className="z-10 flex flex-col items-center">
+              {console.log(filteredNames)}
+              {name &&
+                filteredNames?.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="flex flex-col shadow-xl mb-1 w-2/3  bg-green-100"
+                      onClick={() => setName(item.name)}
+                    >
+                      {item.name}
+                    </div>
+                  );
+                })}
             </div>
           </div>
           <div className="flex text-sm bg-slate-100 p-2 my-2">
@@ -112,14 +137,16 @@ function Expense() {
             </button>
           </div>
         </div>
+
+        {/* other expenses */}
         <div className="flex flex-col  p-3 bg-white">
           <h3>Other Expenses</h3>
           <div className="w-80">
             <div className="flex bg-green-100 p-2 my-2 min-w-96">
               <p>Enter Item:</p>
               <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={otherName}
+                onChange={(e) => setOtherName(e.target.value)}
                 type="text"
                 className="w-full border-b-2 border-b-green-700 "
                 placeholder="Eg: transport"
@@ -128,8 +155,8 @@ function Expense() {
             <div className="flex text-sm bg-green-100 p-2 my-2">
               <p>Enter Total Price:</p>
               <input
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                value={otherPrice}
+                onChange={(e) => setOtherPrice(e.target.value)}
                 type="number"
                 className="w-full border-b-2 border-b-green-700 "
                 placeholder="Amount spent"
@@ -138,8 +165,8 @@ function Expense() {
             <div className="flex bg-green-100 p-2 my-2">
               <p className="text-sm">Enter Total Quantity:</p>
               <input
-                value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
+                value={otherQuantity}
+                onChange={(e) => setOtherQuantity(e.target.value)}
                 type="text"
                 className="w-full border-b-2 border-b-green-700"
                 placeholder="Quantity bought"
