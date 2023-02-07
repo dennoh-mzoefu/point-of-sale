@@ -1,13 +1,13 @@
 import React from "react";
 
-function OrderedExpenses({ data, title }) {
+function OrderedExpenses({ data, title, innerTitle }) {
   return (
     <div className="flex flex-col shadow-xl py-4 bg-slate-200 text-gray-800 px-4">
       <h2 className="text-3xl">{title}</h2>
       {console.log({ title })}
       <div className="flex mx-4">
         <p className="text-lg font-bold flex justify-self-start mx-4">
-          Expense
+          {innerTitle}
         </p>
         <p className="text-lg font-bold flex justify-self-start mx-4">
           Quantity

@@ -21,11 +21,14 @@ import ExpenseReport from "./pages/ExpenseReport";
 
 function App() {
   return (
-    <div className="flex flex-col bg-slate-200">
-      <Navbar />
-      <PreApp className="w-0 h-0" />
-      <div className="flex">
-        <Sidebar />
+    // <div className="w-full bg-slate-200">
+    <div className="flex w-full bg-slate-200  mx-auto min-h-screen">
+      <div className="">
+        <Sidebar className="" />
+      </div>
+      <div className="w-full ">
+        <Navbar />
+        <PreApp className="w-0 h-0" />
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/menu" element={<MenuPage />} />
@@ -39,12 +42,9 @@ function App() {
           <Route path="/store" element={<Store />} />
         </Routes>
       </div>
-
-      {/* <Login /> */}
-      {/* <Admin /> */}
-      {/* <Menu /> */}
-      {/* <Checkout /> */}
     </div>
+
+    // </div>
   );
 }
 

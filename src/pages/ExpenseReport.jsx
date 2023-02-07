@@ -56,21 +56,29 @@ function ExpenseReport() {
     <div className="w-full">
       {today && (
         <div className="my-8 px-4 mt-4 w-fit flex flex-wrap m-auto items-center bg-slate-100 shadow-lg">
-          <OrderedExpenses title="Today" data={today} />
+          <OrderedExpenses innerTitle="expense" title="Today" data={today} />
           <ExpenseChart oldChartData={today} />
         </div>
       )}
 
       {yesterday && (
         <div className="my-8 px-4 mt-4 w-fit flex flex-wrap m-auto items-center bg-slate-100 shadow-lg">
-          <OrderedExpenses title="Yesterday" data={yesterday} />
+          <OrderedExpenses
+            innerTitle="expense"
+            title="Yesterday"
+            data={yesterday}
+          />
           <ExpenseChart oldChartData={yesterday} />
         </div>
       )}
 
       {preYesterday && (
         <div className=" my-8 px-4 mt-4 w-fit flex flex-wrap m-auto items-center bg-slate-100 shadow-lg">
-          <OrderedExpenses title="Two days Ago" data={preYesterday} />
+          <OrderedExpenses
+            innerTitle="expense"
+            title="Two days Ago"
+            data={preYesterday}
+          />
           <ExpenseChart oldChartData={preYesterday} />
         </div>
       )}

@@ -1,5 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { addDoc, deleteDoc, doc } from "firebase/firestore";
+import { addDoc, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db, ordersColRef } from "../../utils/firebase";
 const initialState = {
   currentOrders: [],
@@ -37,6 +37,7 @@ export const orderSlice = createSlice({
         name: action.payload.name,
         price: action.payload.price,
         isPrepared: action.payload.isPrepared,
+        isPaid: false,
         isCancelled: action.payload.isCancelled,
         time: new Date(),
       }).then((res) => {
@@ -48,6 +49,24 @@ export const orderSlice = createSlice({
           (item) => item.orderId !== action.payload.orderId
         ),
       };
+    },
+    doneOrder: (state, action) => {
+      const doneDocRef = doc(db, "orders", action.payload);
+      updateDoc(doneDocRef, {
+        isPrepared: true,
+      }).then(() => {});
+    },
+    unDoneOrder: (state, action) => {
+      const doneDocRef = doc(db, "orders", action.payload);
+      updateDoc(doneDocRef, {
+        isPrepared: false,
+      }).then(() => {});
+    },
+    paidOrder: (state, action) => {
+      const doneDocRef = doc(db, "orders", action.payload);
+      updateDoc(doneDocRef, {
+        isPaid: true,
+      }).then(() => {});
     },
     deleteOrder: (state, action) => {
       const docRef = doc(db, "orders", action.payload);
@@ -74,5 +93,8 @@ export const {
   addOrder,
   deleteOrder,
   deleteCurrentOrder,
+  doneOrder,
+  paidOrder,
+  unDoneOrder,
 } = orderSlice.actions;
 export default orderSlice.reducer;
