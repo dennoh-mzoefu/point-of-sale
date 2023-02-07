@@ -31,7 +31,7 @@ function Home() {
     <div className="flex justify-center p-6">
       {console.log({ today })}
       {console.log({ totalExpense })}
-      <div className="flex mx-4 py-8 px-4 w-56 bg-white justify-around">
+      <div className="flex mx-4 py-8 px-4 w-64 bg-white justify-around">
         <div className="flex flex-col">
           <p>Total Expense</p>
           <p className="text-3xl">{totalExpense}</p>

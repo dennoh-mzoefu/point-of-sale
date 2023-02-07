@@ -51,6 +51,7 @@ export const ordersColRef = collection(db, "orders");
 export const expenseColRef = collection(db, "expense");
 export const stockColRef = collection(db, "stock");
 
+export const salesColRef = collection(db, "sales");
 // queries
 // const q = query(colRef, where("author", "==", "patrick rothfuss"), orderBy('createdAt'))
 export const q = query(colRef, where("name", "==", "chapati"));
