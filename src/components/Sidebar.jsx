@@ -7,6 +7,9 @@ import { GrDocumentStore } from "react-icons/gr";
 import { TbZoomMoney } from "react-icons/tb";
 import { FcSalesPerformance, FcMoneyTransfer } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { BiUserCircle } from "react-icons/bi";
+import logo from "../assets/resturant-logo.svg";
+import { GrNotification } from "react-icons/gr";
 // import { FcSalesPerformance } from "react-icons/fc";
 
 function Sidebar() {
@@ -14,7 +17,14 @@ function Sidebar() {
     "w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-green-400";
   return (
     <div className="sticky top-0 bottom-0 lg:left-0 ">
-      <div className="bg-white shadow-xl h-screen border-r border-slate-300/90 flex flex-col w-fit ">
+      <div className="bg-green-900 shadow-xl h-screen border-r border-slate-300/90 flex flex-col w-fit ">
+        <div className="flex mt-8">
+          <img
+            src={logo}
+            className="h-10 bg-slate-800 rounded-full w-fit h-fit mt-5  "
+          />
+          <h1 className="ml-4 text-2xl text-white">Great Pastures</h1>
+        </div>
         <AiOutlineCloseCircle className="my-5 justify-end " />
         <div className="flex flex-col">
           {/* each link */}
