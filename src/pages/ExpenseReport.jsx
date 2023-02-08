@@ -54,6 +54,7 @@ function ExpenseReport() {
   }, [expense]);
   return (
     <div className="w-full">
+      {console.log({ today })}
       {today && (
         <div className="my-8 px-4 mt-4 w-fit flex flex-wrap m-auto items-center bg-slate-100 shadow-lg">
           <OrderedExpenses innerTitle="expense" title="Today" data={today} />
