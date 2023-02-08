@@ -27,15 +27,15 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+export const provider = new GoogleAuthProvider();
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
 
 export const signInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      console.log(result);
-      //   return result;
+      console.log(result?.user?.uid);
+      return result?.user?.uid;
     })
     .catch((error) => {
       console.log(error);
@@ -50,6 +50,7 @@ export const colRef = collection(db, "menu");
 export const ordersColRef = collection(db, "orders");
 export const expenseColRef = collection(db, "expense");
 export const stockColRef = collection(db, "stock");
+export const userColRef = collection(db, "user");
 
 export const salesColRef = collection(db, "sales");
 // queries
