@@ -1,18 +1,22 @@
 import { onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch } from "react-redux";
 import {
+  auth,
   colRef,
   expenseColRef,
   ordersColRef,
   salesColRef,
   stockColRef,
+  userColRef,
 } from "../utils/firebase";
 import { fetchExpenses } from "./redux/expenseSlice";
 import { fetchMenu } from "./redux/menuSlice";
 import { fetchOrders } from "./redux/orderSlice";
 import { fetchSales } from "./redux/salesSlice";
 import { fetchStock } from "./redux/stockSlice";
+import { fetchUser } from "./redux/userSlice";
 
 function PreApp() {
   const [menuItems, setMenuItems] = useState([]);
@@ -20,8 +24,15 @@ function PreApp() {
   const [expense, setExpense] = useState([]);
   const [stock, setStock] = useState([]);
   const [sales, setSales] = useState([]);
+  const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
   let b = [];
+  useEffect(() => {
+    const unSubscribe = onSnapshot(userColRef, (snapshot) => {
+      setUsers(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    return () => unSubscribe();
+  }, []);
   useEffect(() => {
     const unSubscribe = onSnapshot(salesColRef, (snapshot) => {
       setSales(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -69,6 +80,15 @@ function PreApp() {
     console.log({ stock });
     dispatch(fetchStock(stock));
   }, [stock]);
+  useEffect(() => {
+    console.log({ stock });
+    dispatch(fetchUser(users));
+  }, [users]);
+
+  // authentication
+  const [user, loading] = useAuthState(auth);
+
+  console.log({ user });
   console.log({ menuItems });
   console.log({ sales });
   console.log({ orders });
