@@ -21,7 +21,7 @@ function Sidebar() {
         <div className="flex mt-8">
           <img
             src={logo}
-            className="h-10 bg-slate-800 rounded-full w-fit h-fit mt-5  "
+            className="h-10 bg-slate-800 rounded-full w-fit mt-5  "
           />
           <h1 className="ml-4 text-2xl text-white">Great Pastures</h1>
         </div>

@@ -4,7 +4,7 @@ import ExpenseList from "../components/ExpenseList";
 
 function ExpensePage() {
   return (
-    <div className="flex flex-col w-full flex-wrap w-full">
+    <div className="flex flex-col flex-wrap w-full">
       <Expense />
       <ExpenseList />
     </div>

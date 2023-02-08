@@ -39,7 +39,7 @@ function Login() {
             <button
               type="submit"
               onClick={() => handleClick()}
-              className=" flex text-2xl items-center justify-center w-full text-slate-50 bg-primary-600 hover:bg-slate-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-md text-xl px-5 py-2.5 text-center bg-slate-600 hover:bg-slate-300 hover:text-slate-900 dark:focus:ring-primary-800"
+              className=" flex text-2xl items-center justify-center w-full text-slate-50 bg-primary-600  focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-md  px-5 py-2.5 text-center bg-slate-600 hover:bg-slate-300 hover:text-slate-900 dark:focus:ring-primary-800"
             >
               <FcGoogle className="text-2xl mr-4" /> Sign in with google
             </button>
