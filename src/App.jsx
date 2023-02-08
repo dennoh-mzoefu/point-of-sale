@@ -22,25 +22,27 @@ import ExpenseReport from "./pages/ExpenseReport";
 function App() {
   return (
     // <div className="w-full bg-slate-200">
-    <div className="flex w-full bg-slate-200  mx-auto min-h-screen">
+    <div className="flex w-full bg-slate-100  mx-auto min-h-screen">
       <div className="">
         <Sidebar className="" />
       </div>
       <div className="w-full ">
         <Navbar />
-        <PreApp className="w-0 h-0" />
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/menu" element={<MenuPage />} />
-          <Route path="/ordermanager" element={<OrderManager />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/sales" element={<Sales />} />
-          <Route path="/employees" element={<Employees />} />
-          <Route path="/expense" element={<ExpensePage />} />
-          <Route path="/expenseReport" element={<ExpenseReport />} />
-          <Route path="/store" element={<Store />} />
-        </Routes>
+        <PreApp className="w-0 h-0 " />
+        <div className="w-full overflow-hidden">
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/ordermanager" element={<OrderManager />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/sales" element={<Sales />} />
+            <Route path="/employees" element={<Employees />} />
+            <Route path="/expense" element={<ExpensePage />} />
+            <Route path="/expenseReport" element={<ExpenseReport />} />
+            <Route path="/store" element={<Store />} />
+          </Routes>
+        </div>
       </div>
     </div>
 
