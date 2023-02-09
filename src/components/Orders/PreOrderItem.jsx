@@ -3,9 +3,7 @@ import { useDispatch } from "react-redux";
 import { addOrder, deleteCurrentOrder } from "../../redux/orderSlice";
 
 function PreOrderItem({ item }) {
-  // const [orderItem, setOrderItem] = useState(null);
   useEffect(() => {
-    // setOrderItem(item);
     setQuantity(item.quantity);
   }, [item]);
   const [quantity, setQuantity] = useState(parseInt(item.quantity));
