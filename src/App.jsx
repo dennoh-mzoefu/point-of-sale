@@ -11,8 +11,6 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import { Route, Routes } from "react-router-dom";
 import Sales from "./pages/Sales";
-import Employees from "./pages/Employees";
-// import Expenses from "./pages/Expenses";
 import Store from "./pages/Store";
 import MenuPage from "./pages/MenuPage";
 import OrderManager from "./pages/OrderManager";
@@ -37,7 +35,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/sales" element={<Sales />} />
-            <Route path="/employees" element={<Employees />} />
             <Route path="/expense" element={<ExpensePage />} />
             <Route path="/expenseReport" element={<ExpenseReport />} />
             <Route path="/store" element={<Store />} />
