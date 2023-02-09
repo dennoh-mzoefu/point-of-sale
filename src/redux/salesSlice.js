@@ -1,7 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { addDoc, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { salesColRef } from "../../utils/firebase";
-// import { db, salesColRef } from "../../utils/firebase";
 const initialState = {
   sales: [],
 };
