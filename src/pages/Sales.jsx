@@ -17,7 +17,6 @@ function Sales() {
   let newPrevYesterday = new Date(prevY.toString().slice(0, 16));
   let newToday = new Date(t.toString().slice(0, 16));
   useEffect(() => {
-    // today saless
     setToday(
       sales.filter((item) => {
         let newDate = new Date(item.time.seconds * 1000);
@@ -29,7 +28,6 @@ function Sales() {
     );
   }, [sales]);
   useEffect(() => {
-    // today saless
     setYesterday(
       sales.filter((item) => {
         let newDate = new Date(item.time.seconds * 1000);
@@ -41,7 +39,6 @@ function Sales() {
     );
   }, [sales]);
   useEffect(() => {
-    // today saless
     setPreYesterday(
       sales.filter((item) => {
         let newDate = new Date(item.time.seconds * 1000);
