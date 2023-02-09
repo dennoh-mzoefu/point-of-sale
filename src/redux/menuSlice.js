@@ -24,7 +24,6 @@ export const menuSlice = createSlice({
       }).then((res) => {
         console.log(res);
       });
-      //   state.menu = state.menu.filter((user) => user.id !== action.payload.id);
     },
     deleteUser: (state, action) => {
       state.menu = state.menu.filter((user) => user.id !== action.payload.id);
