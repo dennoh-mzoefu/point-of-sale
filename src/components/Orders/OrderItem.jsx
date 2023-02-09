@@ -12,7 +12,6 @@ function OrderItem({ order, index }) {
     dispatch(deleteOrder(order.id));
   };
   const handleDone = () => {
-    // console.log(order.id);
     dispatch(doneOrder(order.id));
   };
   return (
