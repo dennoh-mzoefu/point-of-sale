@@ -18,7 +18,6 @@ function Home() {
 
   let newTodayExpense = new Date(t.toString().slice(0, 16));
   useEffect(() => {
-    // todayExpense expenses
     setTodayExpense(
       expense.filter((item) => {
         let newDate = new Date(item.time.seconds * 1000);
@@ -30,7 +29,6 @@ function Home() {
     );
   }, [expense]);
   useEffect(() => {
-    // todayExpense expenses
     setTodaySales(
       sales.filter((item) => {
         let newDate = new Date(item.time.seconds * 1000);
