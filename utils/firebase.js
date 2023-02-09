@@ -15,7 +15,6 @@ import {
   getDoc,
   getDocs,
 } from "firebase/firestore";
-// import { getStorage } from "firebase/storage";;
 import { getStorage } from "firebase/storage";
 const firebaseConfig = {
   apiKey: "AIzaSyB-0nGQzSC9KWM5qTdq61__PhXuYUSGyCQ",
