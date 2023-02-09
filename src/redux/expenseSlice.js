@@ -34,7 +34,6 @@ export const expenseSlice = createSlice({
       console.log("delete");
       deleteDoc(docRef).then(() => {
         console.log(action.payload);
-        // const docRef = doc(db, 'orders',action.payload)
       });
     },
   },
