@@ -26,11 +26,8 @@ export const orderSlice = createSlice({
       let a = state.currentOrders;
       console.log(action.payload);
       state.currentOrders.push(action.payload);
-      // console.log(current(state));
     },
     addOrder: (state, action) => {
-      // var index = state.currentOrders.indexOf(action.payload);
-      // state.currentOrders.splice(index, 1);
       console.log(action.payload);
       addDoc(ordersColRef, {
         quantity: action.payload.quantity,
@@ -73,7 +70,6 @@ export const orderSlice = createSlice({
       console.log("delete");
       deleteDoc(docRef).then(() => {
         console.log(action.payload);
-        // const docRef = doc(db, 'orders',action.payload)
       });
     },
     deleteCurrentOrder: (state, action) => {
