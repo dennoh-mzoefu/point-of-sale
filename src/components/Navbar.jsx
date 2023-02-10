@@ -8,6 +8,9 @@ import { auth } from "../../utils/firebase";
 function Navbar() {
   const [user, loading] = useAuthState(auth);
   console.log({ user });
+  const handleLogout = () => {
+    auth.signOut();
+  };
   return (
     <div className="overflow-hidden  sticky top-0 z-10 flex justify-between w-full p-4 items-center bg-zinc-50  border-b pb-2 border-b-green-700">
       <div className="flex items-center"></div>
@@ -34,7 +37,9 @@ function Navbar() {
           <BiUserCircle className="text-3xl  mx-5" />
         )}
         {user ? (
-          <p className="text-xl">Logout</p>
+          <p className="text-xl" onClick={() => handleLogout()}>
+            Logout
+          </p>
         ) : (
           <p className="text-xl">Login</p>
         )}
