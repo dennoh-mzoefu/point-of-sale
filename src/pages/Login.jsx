@@ -10,7 +10,8 @@ import {
   signInWithGoogle,
 } from "../../utils/firebase";
 import { addUser, fetchUser } from "../redux/userSlice";
-
+import "./login.css";
+import logo from "../assets/resturant-logo.svg";
 function Login() {
   const [uid, setUid] = useState("");
   const [state, setState] = useState(false);
@@ -29,22 +30,21 @@ function Login() {
   };
 
   return (
-    <div>
-      {console.log({ uid })}
-      {console.log({ searchedUser })}
-      <div className="flex flex-col align-center m-auto  items-center justify-center">
-        Sign up
-        <div className="w-full  rounded-lg shadow-lg shadow-slate-900/60 dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <button
-              type="submit"
-              onClick={() => handleClick()}
-              className=" flex text-2xl items-center justify-center w-full text-slate-50 bg-primary-600  focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-md  px-5 py-2.5 text-center bg-slate-600 hover:bg-slate-300 hover:text-slate-900 dark:focus:ring-primary-800"
-            >
-              <FcGoogle className="text-2xl mr-4" /> Sign in with google
-            </button>
-          </div>
+    <div className="w-full min-h-screen bg-zinc-700 flex items-center justify-center flex-col">
+      <div className=" h-fit w-fit aboveLogin rounded-full">
+        <img className="h-44 mx-auto mb-0" src={logo} />
+      </div>
+      <div className="flex flex-col w-full align-center  mx-auto  items-center justify-center ">
+        <div className="w-2/3 flex flex-col align-center mx-auto  items-center justify-center rounded-lg shadow-lg   md:mt-0 sm:max-w-md xl:p-0 bg-zinc-800 loginCard ">
+          <button
+            type="submit"
+            onClick={() => handleClick()}
+            className=" flex  items-center justify-center w-full text-slate-50 bg-primary-600  focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-md  px-5 py-2.5 text-center"
+          >
+            <FcGoogle className="iconGoogle text-8xl mr-4" />
+          </button>
         </div>
+        {/* <p>click card to sign in</p> */}
       </div>
     </div>
   );
