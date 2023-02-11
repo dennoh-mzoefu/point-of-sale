@@ -12,16 +12,19 @@ import {
 import { addUser, fetchUser } from "../redux/userSlice";
 import "./login.css";
 import logo from "../assets/resturant-logo.svg";
+import { useNavigate } from "react-router-dom";
 function Login() {
   const [uid, setUid] = useState("");
   const [state, setState] = useState(false);
   const [searchedUser, setSearchedUser] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleClick = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result?.user?.uid);
         dispatch(addUser(result));
+        navigate("/menu");
       })
       .catch((error) => {
         console.log(error);
@@ -30,12 +33,12 @@ function Login() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-zinc-700 flex items-center justify-center flex-col">
+    <div className="w-full min-h-screen bg-stone-700 flex items-center justify-center flex-col">
       <div className=" h-fit w-fit aboveLogin rounded-full">
         <img className="h-44 mx-auto mb-0" src={logo} />
       </div>
       <div className="flex flex-col w-full align-center  mx-auto  items-center justify-center ">
-        <div className="w-2/3 flex flex-col align-center mx-auto  items-center justify-center rounded-lg shadow-lg   md:mt-0 sm:max-w-md xl:p-0 bg-zinc-800 loginCard ">
+        <div className="w-2/3 flex flex-col align-center mx-auto  items-center justify-center rounded-lg shadow-lg   md:mt-0 sm:max-w-md xl:p-0 bg-stone-800 loginCard ">
           <button
             type="submit"
             onClick={() => handleClick()}
