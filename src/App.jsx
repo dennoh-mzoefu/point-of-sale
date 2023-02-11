@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Menu from "./components/Menu/Menu";
 import Checkout from "./components/Checkout/Checkout";
@@ -21,24 +21,49 @@ import { auth } from "../utils/firebase";
 
 function App() {
   const [user, loading] = useAuthState(auth);
+  const [activeMenu, setActiveMenu] = useState(true);
+  const [screenSize, setScreenSize] = useState(0);
 
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
   return (
     // <disv className="w-full bg-slate-200">
-    <div className="flex w-full bg-slate-100  mx-auto min-h-screen">
+    <div className="flex w-full  bg-stone-400  mx-auto min-h-screen">
       {console.log({ user })}
-      {user == null && (
-        <Routes>
-          <Route path="*" element={<Navigate replace to="/login" />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      )}
-      {/* <div className=""> */}
-      {user && (
+
+      {user ? (
         <>
-          <Sidebar className="" />
-          {/* </div> */}
+          <div className={screenSize < 900 ? "fixed" : ""}>
+            <Sidebar
+              activeMenu={activeMenu}
+              setActiveMenu={setActiveMenu}
+              screenSize={screenSize}
+              setScreenSize={setScreenSize}
+              className=""
+            />
+          </div>
           <div className="w-full ">
-            <Navbar />
+            <Navbar
+              activeMenu={activeMenu}
+              setActiveMenu={setActiveMenu}
+              screenSize={screenSize}
+              setScreenSize={setScreenSize}
+            />
             <PreApp class Name="w-0 h-0 " />
             <div className="w-full overflow-hidden">
               <Routes>
@@ -55,6 +80,11 @@ function App() {
             </div>
           </div>
         </>
+      ) : (
+        <Routes>
+          <Route path="*" element={<Navigate replace to="/login" />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       )}
     </div>
 
