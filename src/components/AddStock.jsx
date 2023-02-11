@@ -93,7 +93,7 @@ function AddStock() {
           </label>
         </div>
         <button
-          className="bg-green-500 ml-6 rounded-md px-4 text-white p-2 my-3 justify-self-start w-fit "
+          className="bg-stone-500 ml-6 rounded-md px-4 text-white p-2 my-3 justify-self-start w-fit "
           onClick={(e) => handleClick(e)}
         >
           click me
