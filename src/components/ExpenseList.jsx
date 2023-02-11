@@ -25,7 +25,7 @@ function ExpenseList() {
   };
   return (
     <div className="w-full flex flex-col justify-center items-center mt-4 shadow-lg">
-      <h3 className="bg-green-200 w-3/5 text-center text-xl shadow-lg p-3">
+      <h3 className="bg-stone-200 w-3/5 text-center text-xl shadow-lg p-3">
         Expenses Record
       </h3>
       {expense && (
