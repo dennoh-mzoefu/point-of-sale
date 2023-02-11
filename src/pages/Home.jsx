@@ -4,6 +4,7 @@ import { MdOutlinePayment } from "react-icons/md";
 import PieChart from "../components/charts/PieChart";
 import OrderedExpenses from "../components/Expense/OrderedExpenses";
 import ExpenseChart from "../components/charts/ExpenseChart";
+import Employees from "../components/Employees";
 
 function Home() {
   const { expense } = useSelector((state) => state.expense);
@@ -99,6 +100,7 @@ function Home() {
           <ExpenseChart oldChartData={todayExpense} />
         </div>
       )}
+      <Employees />
     </div>
   );
 }
