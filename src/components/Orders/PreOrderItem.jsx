@@ -39,7 +39,7 @@ function PreOrderItem({ item }) {
   return (
     <div className="flex shadow-xl mb-2 ">
       <div className="flex flex-col  mr-3 ">
-        <div className="bg-green-200 text-white-500 pl-2  w-36 rounded-md shadow-xl">
+        <div className="bg-stone-200 text-white-500 pl-2  w-36 rounded-md shadow-xl">
           <h3>{item.name}</h3>
           <h3>Ksh {price}</h3>
         </div>
@@ -62,7 +62,7 @@ function PreOrderItem({ item }) {
         </div>
         <div className="flex">
           <button
-            className="border bg-slate-600 px-1 text-sm text-white hover:bg-green-300"
+            className="border bg-slate-600 px-1 text-sm text-white hover:bg-stone-300"
             onClick={() => confirmOrder()}
           >
             Confirm{" "}
