@@ -93,7 +93,7 @@ function Expense() {
                   return (
                     <div
                       key={index}
-                      className="flex flex-col shadow-xl mb-1 w-2/3  bg-green-100"
+                      className="flex flex-col shadow-xl mb-1 w-2/3  bg-stone-100"
                       onClick={() => setName(item.name)}
                     >
                       {item.name}
@@ -125,7 +125,7 @@ function Expense() {
           <div className="flex justify-between">
             <button
               onClick={() => handleConfirm()}
-              className="px-2 py-1 bg-green-400 font-bold text-slate-50"
+              className="px-2 py-1 bg-stone-400 font-bold text-slate-50"
             >
               Confirm
             </button>
@@ -142,40 +142,40 @@ function Expense() {
         <div className="flex flex-col  p-3 bg-white">
           <h3>Other Expenses</h3>
           <div className="w-80">
-            <div className="flex bg-green-100 p-2 my-2 min-w-96">
+            <div className="flex bg-stone-100 p-2 my-2 min-w-96">
               <p>Enter Item:</p>
               <input
                 value={otherName}
                 onChange={(e) => setOtherName(e.target.value)}
                 type="text"
-                className="w-full border-b-2 border-b-green-700 "
+                className="w-full border-b-2 border-b-stone-700 "
                 placeholder="Eg: transport"
               />
             </div>
-            <div className="flex text-sm bg-green-100 p-2 my-2">
+            <div className="flex text-sm bg-stone-100 p-2 my-2">
               <p>Enter Total Price:</p>
               <input
                 value={otherPrice}
                 onChange={(e) => setOtherPrice(e.target.value)}
                 type="number"
-                className="w-full border-b-2 border-b-green-700 "
+                className="w-full border-b-2 border-b-stone-700 "
                 placeholder="Amount spent"
               />
             </div>
-            <div className="flex bg-green-100 p-2 my-2">
+            <div className="flex bg-stone-100 p-2 my-2">
               <p className="text-sm">Enter Total Quantity:</p>
               <input
                 value={otherQuantity}
                 onChange={(e) => setOtherQuantity(e.target.value)}
                 type="text"
-                className="w-full border-b-2 border-b-green-700"
+                className="w-full border-b-2 border-b-stone-700"
                 placeholder="Quantity bought"
               />
             </div>
             <div className="flex justify-between">
               <button
                 onClick={() => handleOtherExpenses()}
-                className="px-2 py-1 bg-green-400 font-bold text-slate-50"
+                className="px-2 py-1 bg-stone-400 font-bold text-slate-50"
               >
                 Confirm
               </button>
