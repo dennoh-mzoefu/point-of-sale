@@ -9,8 +9,8 @@ function Orders() {
     <div className="flex flex-col justify-center items-center   mt-5">
       <p className="text-xl bg-white p-3 w-3/4 text-center">Orders Manager</p>
       <hr className="my-2"></hr>
-      <table className=" w-3/4 mx-auto  text-left text-gray-500">
-        <thead className="text-md text-gray-700 uppercase bg-green-200">
+      <table className=" w-3/4 mx-auto  text-left text-stone-500">
+        <thead className="text-md text-stone-700 uppercase bg-stone-200">
           <tr>
             <th className="px-6 py-3 border border-white">Meal</th>
             <th className="px-6 py-3 border border-white">Quantity</th>
