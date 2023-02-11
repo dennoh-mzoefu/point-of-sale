@@ -2,7 +2,7 @@ import React from "react";
 
 function OrderedExpenses({ data, title, innerTitle }) {
   return (
-    <div className="flex flex-col shadow-xl py-4 bg-slate-200 text-gray-800 px-4">
+    <div className="flex flex-col shadow-xl py-4 bg-slate-200 text-stone-800 px-4">
       <h2 className="text-3xl">{title}</h2>
       {console.log({ title })}
       <div className="flex mx-4">
@@ -18,15 +18,15 @@ function OrderedExpenses({ data, title, innerTitle }) {
         return (
           <div
             key={index}
-            className="flex justify-between bg-green-200/70  text-white font-semibold text-lg mt-1"
+            className="flex justify-between bg-stone-200/70  text-white font-semibold text-lg mt-1"
           >
-            <p className="text-gray-800 flex justify-self-start mx-4">
+            <p className="text-stone-800 flex justify-self-start mx-4">
               {item.name}
             </p>
-            <p className="text-gray-800 flex justify-self-start mx-4">
+            <p className="text-stone-800 flex justify-self-start mx-4">
               {item.quantity}
             </p>
-            <p className="text-gray-800 flex justify-self-start mx-4">
+            <p className="text-stone-800 flex justify-self-start mx-4">
               {item.price}
             </p>
           </div>
