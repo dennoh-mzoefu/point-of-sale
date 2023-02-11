@@ -32,7 +32,7 @@ function Menu() {
         {menu?.map((item, index) => {
           return (
             <div
-              className="flex  justify-center  flex-col bg-green-100 shadow-lg m-2 w-fit rounded-lg"
+              className="flex  justify-center  flex-col bg-stone-100 shadow-lg m-2 w-fit rounded-lg"
               key={index}
             >
               <div className="flex flex-col">
