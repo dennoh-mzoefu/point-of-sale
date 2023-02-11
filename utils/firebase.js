@@ -41,7 +41,7 @@ export const signInWithGoogle = () => {
       //   return error;
     });
 };
-
+// getFirestore().settings({ experimentalForceLongPolling: true });
 export const db = getFirestore(app);
 
 // collection ref
