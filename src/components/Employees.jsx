@@ -6,19 +6,28 @@ function Employees() {
   const { users } = useSelector((state) => state.user);
   const [state, setstate] = useState(users);
   return (
-    <div className="flex flex-col">
-      <div className="flex">
-        <div>Name</div>
-        <div>Role</div>
-        {/* <div>Confirm</div> */}
+    <div className="flex flex-col min-w-max w-44 items-center shadow-sm bg-stone-300/30">
+      <div className="flex my-2 border-b">
+        <h2 className="text-xl text-purple-900 pb-1">Employees</h2>
       </div>
       {state?.map((user, index) => {
-        <div key={index} className="flex">
-          {console.log(user.displayName)}
-          <div className="text-red-700">{user?.displayName}</div>
-          <div className="text-white">{user?.email}</div>
-          {/* <div>Confirm</div> */}
-        </div>;
+        return (
+          <div className=" w-full flex justify-around items-center mb-1 bg-stone-300/60">
+            {console.log(user.displayName)}
+            <div className="mx-3  justify-self-start w-full p-2 bg-stone-800/60 text-ssm font-bold text-white">
+              {user?.displayName}
+            </div>
+            <div className="mx-3 p-2 bg-stone-200">{user?.roles}</div>
+            <div className="mx-3 p-2 bg-stone-500">
+              <select>
+                <option>change roles</option>
+                <option>waiter</option>
+                <option>chef</option>
+                <option>admin</option>
+              </select>
+            </div>
+          </div>
+        );
       })}
     </div>
   );

@@ -44,6 +44,7 @@ function App() {
   return (
     // <disv className="w-full bg-slate-200">
     <div className="flex w-full  bg-stone-400  mx-auto min-h-screen">
+      <PreApp class Name="w-0 h-0 " />
       {console.log({ user })}
 
       {user ? (
@@ -64,7 +65,6 @@ function App() {
               screenSize={screenSize}
               setScreenSize={setScreenSize}
             />
-            <PreApp class Name="w-0 h-0 " />
             <div className="w-full overflow-hidden">
               <Routes>
                 <Route path="/home" element={<Home />} />
