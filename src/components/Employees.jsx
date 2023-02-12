@@ -1,9 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { GiDividedSpiral } from "react-icons/gi";
 import { useSelector } from "react-redux";
 
 function Employees() {
   const { users } = useSelector((state) => state.user);
+  const [state, setstate] = useState(users);
   return (
     <div className="flex flex-col">
       <div className="flex">
@@ -11,11 +12,11 @@ function Employees() {
         <div>Role</div>
         {/* <div>Confirm</div> */}
       </div>
-      {users?.map((user, index) => {
+      {state?.map((user, index) => {
         <div key={index} className="flex">
           {console.log(user.displayName)}
-          <div className="text-white">{user.displayName.toString()}</div>
-          <div className="text-white">{user.email}</div>
+          <div className="text-red-700">{user?.displayName}</div>
+          <div className="text-white">{user?.email}</div>
           {/* <div>Confirm</div> */}
         </div>;
       })}

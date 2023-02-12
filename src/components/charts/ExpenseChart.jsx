@@ -24,7 +24,7 @@ function ExpenseChart({ oldChartData }) {
       datasets: [
         {
           // label: dataItem.map((data) => data.name),
-          label: "Expenses",
+          // label: "Expenses",
           data: dataItem?.map((data) => data.amount),
           backgroundColor: [
             "rgb(172, 138, 255)",
