@@ -16,7 +16,7 @@ import { fetchMenu } from "./redux/menuSlice";
 import { fetchOrders } from "./redux/orderSlice";
 import { fetchSales } from "./redux/salesSlice";
 import { fetchStock } from "./redux/stockSlice";
-import { fetchUser } from "./redux/userSlice";
+import { fetchCurrentUser, fetchUser } from "./redux/userSlice";
 
 function PreApp() {
   const [menuItems, setMenuItems] = useState([]);
@@ -87,13 +87,24 @@ function PreApp() {
 
   // authentication
   const [user, loading] = useAuthState(auth);
+  useEffect(() => {
+    user &&
+      dispatch(
+        fetchCurrentUser(users.filter((item) => item.uid == user.uid)[0])
+      );
+  }, [user]);
 
-  console.log({ user });
+  console.log(user?.uid);
+  console.log({ users });
   console.log({ menuItems });
   console.log({ sales });
   console.log({ orders });
 
-  return <div></div>;
+  return (
+    <div>
+      {user && console.log(users.filter((item) => item.uid == user.uid)[0])}
+    </div>
+  );
 }
 
 export default PreApp;
