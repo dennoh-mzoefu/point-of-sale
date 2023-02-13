@@ -16,6 +16,8 @@ function ExpenseReport() {
   let newYesterday = new Date(y.toString().slice(0, 16));
   let newPrevYesterday = new Date(prevY.toString().slice(0, 16));
   let newToday = new Date(t.toString().slice(0, 16));
+  console.log({ newYesterday });
+  console.log({ newPrevYesterday });
   useEffect(() => {
     // today expenses
     setToday(
