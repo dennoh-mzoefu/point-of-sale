@@ -10,14 +10,26 @@ import { Link } from "react-router-dom";
 import { BiUserCircle } from "react-icons/bi";
 import logo from "../assets/resturant-logo.svg";
 import { GrNotification } from "react-icons/gr";
+import { useSelector } from "react-redux";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../utils/firebase";
 // import { FcSalesPerformance } from "react-icons/fc";
 
 function Sidebar({ activeMenu, setActiveMenu, screenSize, setScreenSize }) {
   const style =
     "w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-stone-400";
+  const { currentUser, users } = useSelector((state) => state.user);
+  const [user, loading] = useAuthState(auth);
 
+  const [role, setRole] = useState(currentUser?.roles);
+  useEffect(() => {
+    users &&
+      user &&
+      setRole(users.filter((item) => item.uid == user.uid)[0]?.roles);
+  }, [user, users]);
   return (
     <div className=" ">
+      {console.log({ role })}
       {activeMenu && (
         <div className="bg-stone-900  shadow-xl h-screen border-r border-slate-300/90 flex flex-col w-fit ">
           <div className="flex w-fit ml-4 mt-8">
@@ -32,23 +44,25 @@ function Sidebar({ activeMenu, setActiveMenu, screenSize, setScreenSize }) {
           <AiOutlineCloseCircle className="my-5 justify-end " />
           <div className="flex flex-col">
             {/* each link */}
-            <Link
-              onClick={() => setActiveMenu((prevState) => !prevState)}
-              to="/home"
-            >
-              <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-stone-400">
-                <div className="w-3/4 flex  items-center justify-items-start   ">
-                  {/* icon  */}
-                  <RiAdminLine
-                    className="text-xl text-white "
-                    onClick={() =>
-                      setActiveMenu((prevActiveMenu) => !prevActiveMenu)
-                    }
-                  />
-                  <h3 className="ml-4 font-semibold text-white">Home</h3>
+            {role == "admin" && (
+              <Link
+                onClick={() => setActiveMenu((prevState) => !prevState)}
+                to="/home"
+              >
+                <div className="w-52 flex  items-center justify-center py-3 hover:text-white  hover:bg-stone-400">
+                  <div className="w-3/4 flex  items-center justify-items-start   ">
+                    {/* icon  */}
+                    <RiAdminLine
+                      className="text-xl text-white "
+                      onClick={() =>
+                        setActiveMenu((prevActiveMenu) => !prevActiveMenu)
+                      }
+                    />
+                    <h3 className="ml-4 font-semibold text-white">Home</h3>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            )}
             <Link
               onClick={() => setActiveMenu((prevState) => !prevState)}
               to="/menu"
