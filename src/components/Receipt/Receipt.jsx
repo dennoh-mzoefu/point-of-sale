@@ -9,10 +9,14 @@ function Receipt() {
   const { orders } = useSelector((state) => state.order);
   const [newOrders, setnewOrders] = useState([]);
   const dispatch = useDispatch();
-  let arr = newOrders?.filter((item) => item.isPrepared == true);
-  let arrNum = arr?.map((item, index) => item.price);
-  let arrPrice = arrNum.reduce((a, b) => a + b, 0);
-  const [total, setTotal] = useState(arrPrice);
+
+  const [total, setTotal] = useState(0);
+  useEffect(() => {
+    let arr = newOrders?.filter((item) => item.isPrepared == true);
+    let arrNum = arr?.map((item, index) => item.price);
+    let arrPrice = arrNum.reduce((a, b) => a + b, 0);
+    setTotal(arrPrice);
+  }, [newOrders]);
 
   console.log({ newOrders });
   const [amount, setAmount] = useState(0);
@@ -70,6 +74,7 @@ function Receipt() {
       <div className="bg-amber-100 py-1 px-2 mt-5 shadow-sm">
         <div className="flex mt-4 border-b border-black pb-1">
           <p className="mr-10">Total</p>
+          {console.log({ total })}
           <p>{total}</p>
         </div>
         <div className="flex mt-4 border-b border-black pb-1">
