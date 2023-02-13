@@ -24,6 +24,8 @@ function App() {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(0);
 
+  const { currentUser } = useSelector((state) => state.user);
+
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
@@ -44,8 +46,8 @@ function App() {
   return (
     // <disv className="w-full bg-slate-200">
     <div className="flex w-full  bg-stone-400  mx-auto min-h-screen">
-      <PreApp class Name="w-0 h-0 " />
-      {console.log({ user })}
+      <PreApp className="w-0 h-0 " />
+      {console.log({ currentUser })}
 
       {user ? (
         <>
@@ -65,6 +67,7 @@ function App() {
               screenSize={screenSize}
               setScreenSize={setScreenSize}
             />
+
             <div className="w-full overflow-hidden">
               <Routes>
                 <Route path="/home" element={<Home />} />
@@ -76,6 +79,9 @@ function App() {
                 <Route path="/expense" element={<ExpensePage />} />
                 <Route path="/expenseReport" element={<ExpenseReport />} />
                 <Route path="/store" element={<Store />} />
+                {user && (
+                  <Route path="*" element={<Navigate to="/menu" replace />} />
+                )}
               </Routes>
             </div>
           </div>
