@@ -16,7 +16,6 @@ function Home() {
   const [mostQuantity, setMostQuantity] = useState(0);
   const [mostAmount, set] = useState(0);
   let t = new Date();
-
   let newTodayExpense = new Date(t.toString().slice(0, 16));
   useEffect(() => {
     setTodayExpense(
