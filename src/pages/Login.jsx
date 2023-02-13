@@ -2,7 +2,7 @@ import { signInWithPopup } from "firebase/auth";
 import { getDoc, getDocs, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   auth,
   provider,
@@ -19,11 +19,18 @@ function Login() {
   const [searchedUser, setSearchedUser] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { users } = useSelector((state) => state.user);
   const handleClick = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result?.user?.uid);
-        dispatch(addUser(result));
+
+        dispatch(
+          addUser({
+            ...result,
+            current: users.filter((item) => item.uid == result?.user?.uid)[0],
+          })
+        );
         navigate("/menu");
       })
       .catch((error) => {
