@@ -41,7 +41,7 @@ function Sidebar({ activeMenu, setActiveMenu, screenSize, setScreenSize }) {
               Great Pastures
             </h1>
           </div>
-          <AiOutlineCloseCircle className="my-5 justify-end " />
+          <div className="my-5 justify-end " />
           <div className="flex flex-col">
             {/* each link */}
             {role == "admin" && (
