@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useSelector } from "react-redux";
+import { auth } from "../../utils/firebase";
 import ExpenseChart from "../components/charts/ExpenseChart";
 import OrderedExpenses from "../components/Expense/OrderedExpenses";
 
@@ -54,6 +56,15 @@ function ExpenseReport() {
       })
     );
   }, [expense]);
+  const { currentUser, users } = useSelector((state) => state.user);
+  const [user, loading] = useAuthState(auth);
+
+  const [role, setRole] = useState(currentUser?.roles);
+  useEffect(() => {
+    users &&
+      user &&
+      setRole(users.filter((item) => item.uid == user.uid)[0]?.roles);
+  }, [user, users]);
   return (
     <div className="w-full">
       {console.log({ today })}
@@ -64,7 +75,7 @@ function ExpenseReport() {
         </div>
       )}
 
-      {yesterday && (
+      {role == "admin" && yesterday && (
         <div className="my-8 px-4 mt-4 w-fit flex flex-wrap m-auto items-center bg-slate-100 shadow-lg">
           <OrderedExpenses
             innerTitle="expense"
@@ -75,7 +86,7 @@ function ExpenseReport() {
         </div>
       )}
 
-      {preYesterday && (
+      {role == "admin" && preYesterday && (
         <div className=" my-8 px-4 mt-4 w-fit flex flex-wrap m-auto items-center bg-slate-100 shadow-lg">
           <OrderedExpenses
             innerTitle="expense"

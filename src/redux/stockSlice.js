@@ -27,8 +27,14 @@ export const stockSlice = createSlice({
         console.log(res);
       });
     },
+    addQuantity: (state, action) => {
+      const addRef = doc(db, "stock", action.payload.id);
+      updateDoc(addRef, {
+        quantity: action.payload.quantity,
+      }).then(() => {});
+    },
   },
 });
 
-export const { fetchStock, addStockItem } = stockSlice.actions;
+export const { fetchStock, addStockItem, addQuantity } = stockSlice.actions;
 export default stockSlice.reducer;
