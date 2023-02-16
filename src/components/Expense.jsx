@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addExpense } from "../redux/expenseSlice";
 import { addStockItem } from "../redux/stockSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Expense() {
   const dispatch = useDispatch();
@@ -21,21 +23,27 @@ function Expense() {
   console.log({ filteredNames });
   const handleOtherExpenses = () => {
     const category = "other";
-    if (otherName && otherQuantity && otherPrice) {
-      dispatch(
-        addExpense({
-          quantity: otherQuantity,
-          name: otherName,
-          price: otherPrice,
-          category,
-        })
-      );
-      setOtherName("");
-      setOtherQuantity("");
-      setOtherPrice("");
-    } else {
-      alert("Missing Field");
+    try {
+      if (otherName && otherQuantity && otherPrice) {
+        dispatch(
+          addExpense({
+            quantity: otherQuantity,
+            name: otherName,
+            price: otherPrice,
+            category,
+          })
+        );
+        setOtherName("");
+        setOtherQuantity("");
+        setOtherPrice("");
+      } else {
+        alert("Missing Field");
+      }
+    } catch (error) {
+      notifyError();
+      return;
     }
+    notifySuccess();
   };
   const reset = () => {
     setName("");
@@ -44,14 +52,20 @@ function Expense() {
   };
   const handleConfirm = () => {
     const category = "stock";
-    if (quantity && name && price && category) {
-      console.log(quantity, name, price, category);
+    try {
+      if (quantity && name && price && category) {
+        console.log(quantity, name, price, category);
 
-      dispatch(addExpense({ quantity, name, price, category }));
-      if (category == "stock") {
-        dispatch(addStockItem({ name, price, quantity }));
+        dispatch(addExpense({ quantity, name, price, category }));
+        if (category == "stock") {
+          dispatch(addStockItem({ name, price, quantity }));
+        }
       }
+    } catch (error) {
+      notifyError();
+      return;
     }
+    notifySuccess();
     reset();
   };
   const handleChange = (e) => {
@@ -72,6 +86,30 @@ function Expense() {
 
     setName(keyword);
   };
+
+  // toastify
+  const notifySuccess = () =>
+    toast.success("Expense Added", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  const notifyError = () =>
+    toast.error("Error Occured", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   return (
     <div className="flex flex-col justify-center items-center mt-3 px-3">
       <h2 className="text-2xl py-2 w-full bg-white text-center ">Expense</h2>
@@ -196,6 +234,7 @@ function Expense() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
