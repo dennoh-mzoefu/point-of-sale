@@ -46,6 +46,12 @@ function Login() {
       </div>
       <div className="flex flex-col w-full align-center  mx-auto  items-center justify-center ">
         <div className="w-2/3 flex flex-col align-center mx-auto  items-center justify-center rounded-lg shadow-lg   md:mt-0 sm:max-w-md xl:p-0 bg-stone-800 loginCard ">
+          <h2 className="text-stone-500 font-bold font-serif text-4xl pb-2 border-b-2 border-b-white">
+            <span className="text-white">W</span>e
+            <span className="text-white">l</span>c
+            <span className="text-white">o</span>m
+            <span className="text-white">e</span>
+          </h2>
           <button
             type="submit"
             onClick={() => handleClick()}
