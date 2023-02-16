@@ -19,8 +19,13 @@ function Employees() {
   }, [role]);
   return (
     <div className="flex flex-col min-w-max w-44 items-center shadow-sm bg-stone-300/30">
-      <div className="flex my-2 border-b">
+      <div className="flex flex-col my-2 border-b">
         <h2 className="text-xl text-purple-900 pb-1">Employees</h2>
+      </div>
+      <div className=" w-full flex justify-around p-2  mb-1 bg-stone-600/60">
+        <div className="">Name</div>
+        <div className="">Current</div>
+        <div className="">Change</div>
       </div>
       {users?.map((user, index) => {
         return (
@@ -33,7 +38,7 @@ function Employees() {
               {user?.displayName}
             </div>
             <div className="mx-3 p-2 bg-stone-200">{user?.roles}</div>
-            <div className="mx-3 p-2 bg-stone-500">
+            <div className="mx-3 p-2 ">
               <select
                 onChange={(e) => {
                   setRole(e?.target?.value);
