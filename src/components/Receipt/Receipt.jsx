@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineUndo } from "react-icons/ai";
+import { MdCloseFullscreen } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { doneOrder, paidOrder, unDoneOrder } from "../../redux/orderSlice";
 import { addSale } from "../../redux/salesSlice";
+
+import ReceiptGenerated from "./ReceiptGenerated";
 
 function Receipt() {
   const { orders } = useSelector((state) => state.order);
@@ -21,6 +24,7 @@ function Receipt() {
   console.log({ newOrders });
   const [amount, setAmount] = useState(0);
   const [balance, setBalance] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   console.log({ amount });
   useEffect(() => {
     setnewOrders(
@@ -35,8 +39,8 @@ function Receipt() {
     dispatch(unDoneOrder(id));
   };
 
+  const receiptId = v4();
   const generateReceipt = (e) => {
-    const receiptId = v4();
     newOrders.forEach((item, index) => {
       dispatch(
         addSale({
@@ -51,9 +55,9 @@ function Receipt() {
       dispatch(doneOrder(item.id));
       dispatch(paidOrder(item.id));
     });
-
     // dispatch(addReceipt({id,amount,balance}))
   };
+
   return (
     <div className="mt-8 p-5 min-h-40 ml-10 bg-white">
       {newOrders?.map((item, index) => {
@@ -91,10 +95,40 @@ function Receipt() {
           <p>{balance}</p>
           {console.log({ balance })}
         </div>
+        {/* <div >Hello</div> */}
       </div>
+
       <div>
+        <>
+          {showModal ? (
+            <>
+              <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+                <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                  {/*content*/}
+                  <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full  outline-none focus:outline-none">
+                    {/*header*/}
+                    <ReceiptGenerated
+                      newOrders={newOrders}
+                      total={total}
+                      amount={amount}
+                      balance={balance}
+                      receiptId={receiptId}
+                    />
+                    <div className="flex items-start justify-end p-2 border-t border-solid border-slate-200 rounded-b">
+                      <MdCloseFullscreen
+                        className="bg-green-400 rounded-full p-1 text-2xl shadow-lg mb-2 ml-2"
+                        onClick={() => setShowModal(false)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+            </>
+          ) : null}
+        </>
         <button
-          onClick={(e) => generateReceipt(e)}
+          onClick={() => setShowModal(true)}
           className="bg-purple-300 mt-2 p-2"
         >
           Generate Receipt
