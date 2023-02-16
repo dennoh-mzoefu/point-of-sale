@@ -31,6 +31,7 @@ function Store() {
     console.log({ item });
     // dispatch(addQuantity({ ...item, quantity: quantity - 1 }));
   };
+
   return (
     <div className="flex flex-col  my-4 items-center justify-center">
       <h2 className="text-2xl px-6 bg-white py-3 my-3">Stock quantity</h2>
