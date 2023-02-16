@@ -6,7 +6,7 @@ function Orders() {
   const { orders } = useSelector((state) => state.order);
   console.log({ orders });
   return (
-    <div className=" scroll-auto flex flex-col justify-center items-center     mt-5">
+    <div className=" overflow-x-auto flex flex-col justify-center items-center     mt-5">
       <p className="text-xl bg-white p-3  text-center">Orders Manager</p>
       <hr className="my-2"></hr>
       <table className="  mx-auto  text-left text-stone-500">

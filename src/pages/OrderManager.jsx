@@ -36,7 +36,7 @@ function OrderManager() {
         <Receipt />
       ) : (
         <MdReceiptLong
-          className="p-1 mt-3 bg-white"
+          className="p-1 text-3xl mt-3 bg-white"
           onClick={() => setActiveMenu(!activeMenu)}
         />
       )}
