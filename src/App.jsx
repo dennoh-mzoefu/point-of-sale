@@ -79,8 +79,9 @@ function App() {
                 <Route path="/expense" element={<ExpensePage />} />
                 <Route path="/expenseReport" element={<ExpenseReport />} />
                 <Route path="/store" element={<Store />} />
-
-                <Route path="*" element={<Navigate to="/menu" replace />} />
+                {user && (
+                  <Route path="*" element={<Navigate to="/menu" replace />} />
+                )}
               </Routes>
             </div>
           </div>

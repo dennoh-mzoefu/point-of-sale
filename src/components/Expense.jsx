@@ -30,6 +30,9 @@ function Expense() {
           category,
         })
       );
+      setOtherName("");
+      setOtherQuantity("");
+      setOtherPrice("");
     } else {
       alert("Missing Field");
     }
@@ -49,6 +52,7 @@ function Expense() {
         dispatch(addStockItem({ name, price, quantity }));
       }
     }
+    reset();
   };
   const handleChange = (e) => {
     const keyword = e.target.value;
