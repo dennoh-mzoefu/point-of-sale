@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addOrder, deleteCurrentOrder } from "../../redux/orderSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function PreOrderItem({ item }) {
   useEffect(() => {
@@ -21,17 +23,22 @@ function PreOrderItem({ item }) {
     quantity < 0 && setQuantity(0);
   }, [quantity]);
   const confirmOrder = () => {
-    dispatch(
-      addOrder({
-        orderId: item.orderId,
-        quantity,
-        name: item.name,
-        price,
-        isPrepared: false,
-        isCancelled: false,
-      })
-    );
-    console.log(quantity, item.name, price);
+    try {
+      dispatch(
+        addOrder({
+          orderId: item.orderId,
+          quantity,
+          name: item.name,
+          price,
+          isPrepared: false,
+          isCancelled: false,
+        })
+      );
+    } catch (error) {
+      notifyError();
+      return;
+    }
+    notifySuccess();
   };
   const DeleteOrder = () => {
     dispatch(deleteCurrentOrder(item.orderId));
@@ -39,6 +46,31 @@ function PreOrderItem({ item }) {
   useEffect(() => {
     setPrice(quantity * a);
   }, [quantity]);
+
+  // toasts
+  const notify = () => toast("Added!");
+  const notifySuccess = () =>
+    toast.success("Order Added", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  const notifyError = () =>
+    toast.error("Error Occured", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   return (
     <div className="flex shadow-xl mb-2 ">
       <div className="flex flex-col  mr-3 ">
@@ -78,6 +110,7 @@ function PreOrderItem({ item }) {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
