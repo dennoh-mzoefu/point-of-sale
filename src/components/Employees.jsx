@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import { GiDividedSpiral } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRoles } from "../redux/userSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Employees() {
   const { users } = useSelector((state) => state.user);
@@ -14,9 +16,39 @@ function Employees() {
     setRole(e?.target?.value);
   };
   useEffect(() => {
-    console.log({ role });
-    state && role && dispatch(updateRoles({ ...state, role }));
+    // console.log({ role });
+    try {
+      state && role && dispatch(updateRoles({ ...state, role }));
+    } catch (error) {
+      notifyError();
+      return;
+    }
+    state && role && notifySuccess();
   }, [role]);
+
+  // toastify
+  const notifySuccess = () =>
+    toast.success("Role Changed", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  const notifyError = () =>
+    toast.error("Error Occured", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   return (
     <div className="flex flex-col min-w-max w-44 items-center shadow-sm bg-stone-300/30">
       <div className="flex flex-col my-2 border-b">
@@ -54,6 +86,7 @@ function Employees() {
           </div>
         );
       })}
+      <ToastContainer />
     </div>
   );
 }
