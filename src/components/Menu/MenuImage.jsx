@@ -15,7 +15,13 @@ function MenuImage({ imageRef }) {
           return;
         });
   }, []);
-  return <img className="h-40 w-44 rounded-t-lg" src={url} alt="food pic" />;
+  return (
+    <img
+      className="h-40  md:w-44  w-36 rounded-t-lg"
+      src={url}
+      alt="food pic"
+    />
+  );
 }
 
 export default MenuImage;

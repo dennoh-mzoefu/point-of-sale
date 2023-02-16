@@ -24,31 +24,31 @@ function Menu() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-col justify-start p-9 shadow-lg bg-white w-full">
+      <div className="flex flex-col justify-start p-5 shadow-lg bg-stone-100 w-full">
         <h1 className="text-2xl">Menu</h1>
       </div>
-      <h4>Snacks</h4>
-      <div className="flex  flex-wrap">
+      <h4>Food</h4>
+      <div className="flex items-center w- flex-wrap  ">
         {menu?.map((item, index) => {
           return (
             <div
-              className="flex  justify-center  flex-col bg-stone-100 shadow-lg m-2 w-fit rounded-lg"
+              className="flex  justify-center items-center flex-col shadow-lg m-2 bg-white w-fit rounded-lg"
               key={index}
             >
-              <div className="flex flex-col">
+              <div className="flex flex-col w-fit  ">
                 {/* <div className="w-0 h-0" onLoad={console.log({ url })}></div> */}
                 <MenuImage imageRef={item.imageRef} />
                 {/* name */}
-                <p className="pt-1  flex pl-10 pr-5">
+                <p className="pt-1  flex pl-5  pr-2">
                   <BsDot />
                   {item.name}
                 </p>
-                <p className="pt-1 flex pl-10 pr-5">
+                <p className="pt-1 flex pl-5  pr-2">
                   <BsDot />
                   {item.category}
                 </p>
                 {/* price */}
-                <p className="pt-1 flex pl-10 pr-5">
+                <p className="pt-1 flex pl-5  pr-2">
                   <BsDot />
                   Ksh {item.price}
                 </p>
