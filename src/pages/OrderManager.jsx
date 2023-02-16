@@ -29,7 +29,7 @@ function OrderManager() {
     }
   }, [screenSize]);
   return (
-    <div className="w-full flex ml-10 items-start justify-center">
+    <div className="w-full sm:bg-red-900  flex  items-center flex-wrap justify-center">
       <Orders />
 
       {activeMenu ? (
