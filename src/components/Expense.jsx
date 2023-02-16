@@ -108,6 +108,7 @@ function Expense() {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               type="number"
+              min="0"
               className="w-full  border-b border-black "
               placeholder="Amount Spent"
             />
@@ -118,6 +119,7 @@ function Expense() {
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               type="number"
+              min="0"
               className="w-full  border-b border-black "
               placeholder="Eg: tomato"
             />
@@ -158,6 +160,7 @@ function Expense() {
                 value={otherPrice}
                 onChange={(e) => setOtherPrice(e.target.value)}
                 type="number"
+                min="0"
                 className="w-full border-b-2 border-b-stone-700 "
                 placeholder="Amount spent"
               />

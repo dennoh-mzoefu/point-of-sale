@@ -17,6 +17,9 @@ function PreOrderItem({ item }) {
   const LowerQuantity = () => {
     setQuantity((prevQuantity) => prevQuantity - 1);
   };
+  useEffect(() => {
+    quantity < 0 && setQuantity(0);
+  }, [quantity]);
   const confirmOrder = () => {
     dispatch(
       addOrder({

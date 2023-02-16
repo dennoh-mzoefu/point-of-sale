@@ -86,6 +86,7 @@ function Receipt() {
           <input
             type="number"
             value={amount}
+            min="0"
             className="border border-black"
             onChange={(e) => setAmount(e.target.value)}
           />

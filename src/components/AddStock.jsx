@@ -109,6 +109,7 @@ function AddStock() {
               />
               <input
                 type="number"
+                min="0"
                 className="px-3 border-b w-full border-amber-700 my-2 h-10"
                 placeholder="Price"
                 value={price}

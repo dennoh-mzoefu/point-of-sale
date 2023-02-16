@@ -39,6 +39,7 @@ function Admin() {
           />
           <input
             type="number"
+            min="0"
             className=" bg-slate-200 mb-2"
             placeholder="Price"
             value={price}
