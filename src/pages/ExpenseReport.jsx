@@ -21,7 +21,7 @@ function ExpenseReport() {
   console.log({ newYesterday });
   console.log({ newPrevYesterday });
   useEffect(() => {
-    // today expenses
+    //  today expenses
     setToday(
       expense.filter((item) => {
         let newDate = new Date(item.time.seconds * 1000);
