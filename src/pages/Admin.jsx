@@ -7,7 +7,6 @@ function Admin() {
   const [price, setPrice] = useState(6);
   const dispatch = useDispatch();
 
-  
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(
