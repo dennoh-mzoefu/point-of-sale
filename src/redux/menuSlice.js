@@ -11,7 +11,7 @@ export const menuSlice = createSlice({
   reducers: {
     fetchMenu: (state, action) => {
       state.menu = action.payload;
-      console.log(current(state));
+      // console.log(current(state));
     },
 
     addMenu: (state, action) => {
