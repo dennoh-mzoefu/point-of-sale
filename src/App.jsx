@@ -47,7 +47,7 @@ function App() {
     // <disv className="w-full bg-slate-200">
     <div className="flex w-full  bg-stone-400  mx-auto min-h-screen">
       <PreApp className="w-0 h-0 " />
-      {console.log({ currentUser })}
+      {/* {console.log({ currentUser })} */}
 
       {user ? (
         <>
