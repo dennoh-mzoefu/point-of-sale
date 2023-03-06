@@ -52,7 +52,7 @@ export const userSlice = createSlice({
               console.log(res);
             });
       }
-      console.log(current(state));
+      // console.log(current(state));
     },
     deleteUser: (state, action) => {},
     updateRoles: (state, action) => {
