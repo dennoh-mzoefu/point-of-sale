@@ -98,7 +98,7 @@ function PreApp() {
   // console.log({ users });
   // console.log({ menuItems });
   console.log({ sales });
-  console.log({ orders });
+  // console.log({ orders });
 
   return (
     <div>
