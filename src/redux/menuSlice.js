@@ -15,7 +15,7 @@ export const menuSlice = createSlice({
     },
 
     addMenu: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       addDoc(colRef, {
         category: action.payload.category,
         name: action.payload.name,
