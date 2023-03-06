@@ -26,7 +26,7 @@ export const expenseSlice = createSlice({
         category: action.payload.category,
         time: new Date(),
       }).then((res) => {
-        console.log(res);
+        // console.log(res);
       });
     },
     deleteExpense: (state, action) => {
