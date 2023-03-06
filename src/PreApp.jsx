@@ -97,7 +97,7 @@ function PreApp() {
   // console.log(user?.uid);
   // console.log({ users });
   // console.log({ menuItems });
-  console.log({ sales });
+  // console.log({ sales });
   // console.log({ orders });
 
   return (
