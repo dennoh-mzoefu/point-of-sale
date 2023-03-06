@@ -18,7 +18,7 @@ export const expenseSlice = createSlice({
       };
     },
     addExpense: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       addDoc(expenseColRef, {
         quantity: action.payload.quantity,
         name: action.payload.name,
